@@ -24,6 +24,7 @@ jobs:
     - name: Prepare reference DLLs
       shell: pwsh
       run: |
+        New-Item -ItemType Directory -Path lib -Force | Out-Null
         curl -sL -o FanControl.zip "https://github.com/Rem0o/FanControl.Releases/releases/download/V271/FanControl_271_net_4_8.zip"
         Add-Type -AssemblyName System.IO.Compression.FileSystem
         $zip = [System.IO.Compression.ZipFile]::OpenRead("FanControl.zip")
