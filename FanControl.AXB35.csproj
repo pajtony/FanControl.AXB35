@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>FanControl.AXB35</AssemblyName>
+    <RootNamespace>FanControl.AXB35</RootNamespace>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- FanControl.Plugins.dll - shipped with Fan Control, resolved at runtime -->
+    <Reference Include="FanControl.Plugins">
+      <HintPath>lib\FanControl.Plugins.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- LibreHardwareMonitorLib.dll - shipped with Fan Control, for PawnIO EC access -->
+    <Reference Include="LibreHardwareMonitorLib">
+      <HintPath>lib\LibreHardwareMonitorLib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

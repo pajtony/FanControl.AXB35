@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+
+# Reference DLLs (user must copy from Fan Control installation)
+lib/*.dll
+lib/*.pdb
+
+# Dev documents
+DONE.md
+PLAN.md
+
+# IDE and OS files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.DS_Store
+Thumbs.db
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
