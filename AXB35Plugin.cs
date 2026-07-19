@@ -72,6 +72,18 @@ namespace FanControl.AXB35
                     _logger.Log("AXB35Plugin: ACPI EC probe successful (cmetz register map).");
                     _chipDetected = true;
 
+                    // Read EC firmware version
+                    try
+                    {
+                        byte major = _ec.ReadByte(0x00);
+                        byte minor = _ec.ReadByte(0x01);
+                        _logger.Log($"AXB35Plugin: EC firmware version {major}.{minor}");
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.Log($"AXB35Plugin: Could not read firmware version: {ex.Message}");
+                    }
+
                     // Test SRAM access
                     if (sioChipFound)
                     {
