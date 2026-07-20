@@ -77,7 +77,7 @@ namespace FanControl.AXB35
                     {
                         byte major = _ec.ReadByte(0x00);
                         byte minor = _ec.ReadByte(0x01);
-                        _logger.Log($"AXB35Plugin: EC firmware version {major}.{minor}");
+                        _logger.Log($"AXB35Plugin: EC firmware version {major}.{minor:D2}");
                     }
                     catch (Exception ex)
                     {
