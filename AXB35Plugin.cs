@@ -126,23 +126,11 @@ namespace FanControl.AXB35
             _logger.Log("AXB35Plugin: Loading sensors...");
 
             // Temperature sensor (register 0x70)
-            var tempSensor = new TemperatureSensor(_ec, "IT5570/Temp_CPU", "CPU Temp", _ec.ReadTemperature);
-            _tempSensors.Add(tempSensor);
-            container.TempSensors.Add(tempSensor);
+                        var tempSensor = new TemperatureSensor(_ec, "AXB35/Temp_CPU", "CPU Temp", _ec.ReadTemperature);
+                        _tempSensors.Add(tempSensor);
+                        container.TempSensors.Add(tempSensor);
 
-            // SRAM temperature sensors (if available)
-            if (_sramAccessible)
-            {
-                var cpuDie = new TemperatureSensor(_ec, "IT5570/Temp_CPU_Die", "CPU Die", _ec.ReadCpuDieTemp);
-                var heatsink = new TemperatureSensor(_ec, "IT5570/Temp_Heatsink", "Heatsink", _ec.ReadHeatsinkTemp);
-                var chipset = new TemperatureSensor(_ec, "IT5570/Temp_Chipset", "Chipset", _ec.ReadChipsetTemp);
-                var ecTemp = new TemperatureSensor(_ec, "IT5570/Temp_EC", "EC Internal", _ec.ReadEcTemp);
-                _tempSensors.AddRange(new[] { cpuDie, heatsink, chipset, ecTemp });
-                foreach (var s in new[] { cpuDie, heatsink, chipset, ecTemp })
-                    container.TempSensors.Add(s);
-            }
-
-            // Fan RPM sensors (3 fans from cmetz register map)
+                        // Power mode control sensor (last — after all paired controls)
             var fan1 = new FanSpeedSensor(_ec, 1, "CPU Fan 1");
             var fan2 = new FanSpeedSensor(_ec, 2, "CPU Fan 2");
             var fan3 = new FanSpeedSensor(_ec, 3, "System Fan");
