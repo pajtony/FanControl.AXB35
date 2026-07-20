@@ -44,7 +44,7 @@ These are measured RPM values for each level on a Bosgame M5 (Sixunited AXB35). 
 ## Build (for developers)
 
 ```bash
-git clone https://github.com/YOUR_USER/FanControl.AXB35.git
+git clone https://github.com/pajtony/FanControl.AXB35.git
 cd FanControl.AXB35
 
 # Copy reference DLLs from your Fan Control installation
