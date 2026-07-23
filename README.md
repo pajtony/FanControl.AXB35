@@ -28,6 +28,8 @@ After installation you should see something similar to this:
 
 ![AXB35 controls after install](docs/after-install.png)
 
+6. Pair the speed sensors by clicking the **Pair speed sensor** buttons. The manual pairing method is recommended — it’s straightforward and faster.
+
 ## Fan Calibration Reference
 
 These are measured RPM values for each level on a Bosgame M5 (Sixunited AXB35). Your values may vary.
