@@ -28,8 +28,10 @@ After installation you should see something similar to this:
 
 ![AXB35 controls after install](docs/after-install.png)
 
-6. Pair the speed sensors by clicking the **Pair speed sensor** buttons. The manual pairing method is recommended — it’s straightforward and faster.
-7. Calibrate the fans by clicking the **Calibration** buttons. Manual calibration is recommended because the EC only supports 6 discrete speed levels (0, 20, 40, 60, 80, 100 %). Enter these values in the manual calibration window and always wait 2–3 seconds for the fan to reach the requested speed.
+## Basic configuration
+
+1. Pair the speed sensors by clicking the **Pair speed sensor** buttons. The manual pairing method is recommended — it’s straightforward and faster.
+2. Calibrate the fans by clicking the **Calibration** buttons. Manual calibration is recommended because the EC only supports 6 discrete speed levels (0, 20, 40, 60, 80, 100 %). Enter these values in the manual calibration window and always wait 2–3 seconds for the fan to reach the requested speed.
 
 ![Manual calibration example](docs/CPU_Fan1_Calibration.png)
 
