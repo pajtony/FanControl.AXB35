@@ -15,9 +15,17 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
 
 - [Fan Control](https://github.com/Rem0o/FanControl.Releases) V271 or later
 
-## Install
+## Installation
 
-Copy `FanControl.AXB35.dll` to Fan Control's `Plugins` folder and restart Fan Control.
+1. Download the latest `FanControl.AXB35.dll` from the [Releases](https://github.com/pajtony/FanControl.AXB35/releases) page.
+2. Either:
+   - Copy the DLL into Fan Control’s `Plugins` folder  
+     (usually `C:\Program Files\FanControl\Plugins` or next to `FanControl.exe`), **or**
+   - In the Fan Control app, go to **Settings → Plugins → Install plugin** and select the downloaded DLL.
+3. Restart Fan Control.
+4. The new sensors and controls should appear under the **AXB35** group.
+
+> Requires [Fan Control](https://github.com/Rem0o/FanControl.Releases) **V271 or later**.
 
 ## Fan Calibration Reference
 
