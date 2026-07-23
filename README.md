@@ -102,8 +102,6 @@ The plugin communicates with the IT5570 EC via the ACPI EC interface (ports `0x6
 | `0x22/0x24/0x26` | Fan level (0-5) |
 | `0x70` | CPU temperature |
 
-Based on the [cmetz/ec-su_axb35-linux](https://github.com/cmetz/ec-su_axb35-linux) driver.
-
 ## Credits
 
 - Register map from [cmetz/ec-su_axb35-linux](https://github.com/cmetz/ec-su_axb35-linux)
