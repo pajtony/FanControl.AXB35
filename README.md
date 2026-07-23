@@ -15,7 +15,6 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
 - [Tested Hardware](#tested-hardware)
 - [Build (for developers)](#build-for-developers)
 - [How It Works](#how-it-works)
-- [Register Map](#register-map)
 - [Credits](#credits)
 - [License](#license)
 
@@ -97,7 +96,7 @@ Requires .NET 8 SDK.
 
 The plugin communicates with the IT5570 EC via the ACPI EC interface (ports `0x62`/`0x66`) using the PawnIO driver built into LibreHardwareMonitorLib. The EC firmware on these systems exposes fan control as 6 discrete levels through registers `0x21`-`0x26`. Fan Control's 0-100% is mapped to the nearest level.
 
-## Register Map
+### Register Map
 
 | Register | Function |
 |----------|----------|
