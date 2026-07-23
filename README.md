@@ -24,6 +24,10 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
 4. Restart Fan Control.
 5. The new sensors and controls should appear under the **AXB35** group.
 
+After installation you should see something similar to this:
+
+![AXB35 controls after install](docs/after-install.png)
+
 ## Fan Calibration Reference
 
 These are measured RPM values for each level on a Bosgame M5 (Sixunited AXB35). Your values may vary.
