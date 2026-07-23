@@ -12,7 +12,6 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
 - [Features](#features)
 - [Installation](#installation)
 - [Basic configuration](#basic-configuration)
-- [Fan Calibration Reference](#fan-calibration-reference)
 - [Tested Hardware](#tested-hardware)
 - [Build (for developers)](#build-for-developers)
 - [How It Works](#how-it-works)
@@ -24,7 +23,7 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
 
 - **CPU Temp** — temperature sensor (°C)
 - **3x Fan RPM** — CPU Fan 1, CPU Fan 2, System Fan
-- **3x Fan Control** — paired control sensors, 6 discrete levels (0/20/40/60/80/100%)
+- **3x Fan Control** — fan controls paired with the RPM sensors, 6 discrete levels (0/20/40/60/80/100%)
 
 ## Installation
 
@@ -50,26 +49,13 @@ After installation you should see something similar to this:
 
 ![System Fan calibration](docs/System_Fan_Calibration.png)
 
-After calibration the controls should look similar to this:
+After pairing and calibration the controls should look similar to this:
 
 ![After calibration](docs/after-calibration.png)
 
-3. Add curves to control fan speed. You can also create custom sensors if needed. An example setup looks like this:
+3. Create fan curves that use the AXB35 temperature sensor (or a custom mix) to control the fans. You can also create custom sensors if needed. An example setup looks like this:
 
 ![Example setup](docs/my_current_setup.png)
-
-## Fan Calibration Reference
-
-These are measured RPM values for each level on a Bosgame M5 (Sixunited AXB35). Your values may vary.
-
-| Level | CPU Fan 1 | CPU Fan 2 | System Fan |
-|-------|-----------|-----------|------------|
-| 0% | 0 RPM | 0 RPM | 0 RPM |
-| 20% | 1530 RPM | 1520 RPM | 600 RPM |
-| 40% | 2570 RPM | 2540 RPM | 1330 RPM |
-| 60% | 3390 RPM | 3340 RPM | 1970 RPM |
-| 80% | 4020 RPM | 4000 RPM | 2370 RPM |
-| 100% | 4600 RPM | 4600 RPM | 2530 RPM |
 
 ## Tested Hardware
 
