@@ -63,12 +63,14 @@ These are measured RPM values for each level on a Bosgame M5 (Sixunited AXB35). 
 
 ## Tested Hardware
 
-| Device | Status | Notes |
-|--------|--------|-------|
-| Bosgame M5 | ✅ Confirmed working | Sixunited AXB35 |
-| GMKtec EVO-X2 (V21 & V22) | ⬜ Untested, may work | Same AXB35 board |
-| FEVM FA-EX9 (V22 & V30) | ⬜ Untested, may work | Same AXB35 board |
-| NIMO AI MiniPC | ⬜ Untested, may work | Same AXB35 board |
+| Device | Status | EC Firmware | Notes |
+|--------|--------|-------------|-------|
+| Bosgame M5 | ✅ Confirmed working | 1.08 | Sixunited AXB35 |
+| GMKtec EVO-X2 (V21 & V22) | ⬜ Untested, may work | — | Same AXB35 board |
+| FEVM FA-EX9 (V22 & V30) | ⬜ Untested, may work | — | Same AXB35 board |
+| NIMO AI MiniPC | ⬜ Untested, may work | — | Same AXB35 board |
+
+The EC firmware version is printed in Fan Control’s log (`log.txt`) when the plugin starts.
 
 ## Build (for developers)
 
