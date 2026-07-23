@@ -2,8 +2,10 @@
 
 Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature monitoring, fan RPM sensing, and fan speed control for mini PCs with an ITE IT5570 EC using the AXB35 firmware layout.
 
-> **⚠️ Disclaimer**
-> This plugin communicates directly with the embedded controller via ACPI EC register access. The register map was reverse-engineered and may not work on all firmware versions. When a fan control is set to manual mode, the EC's automatic thermal management is overridden for that fan — ensure your cooling is adequate. Level 0 stops the fan completely. Use at your own risk.
+> **⚠️ Warning**
+> This plugin communicates directly with the embedded controller (EC) via reverse-engineered registers. Compatibility is not guaranteed across all firmware versions. Setting a fan to manual mode overrides the EC’s automatic thermal management for that fan. Level 0 stops the fan completely.
+>
+> **Use at your own risk.** The author accepts no responsibility for any damage to hardware, data loss, system instability, or other issues that may arise from using this software. This software is provided “as is”, without warranty of any kind.
 
 ## Features
 
