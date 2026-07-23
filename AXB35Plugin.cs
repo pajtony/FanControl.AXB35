@@ -14,7 +14,7 @@ namespace FanControl.AXB35
     /// Fan Control plugin for the Sixunited AXB35 motherboard.
     /// Uses the cmetz/ec-su_axb35 register map for 3 fans.
     /// </summary>
-    public class AXB35Plugin : IPlugin3
+    public class AXB35Plugin : IPlugin2
     {
         private readonly IPluginLogger _logger;
 
@@ -26,7 +26,6 @@ namespace FanControl.AXB35
         private readonly List<IPluginSensor> _fanSensors = new();
 
         private bool _chipDetected;
-        private bool _sramAccessible;
         private readonly List<IPluginControlSensor> _controlSensors = new();
 
         public AXB35Plugin(IPluginLogger logger)
@@ -90,12 +89,10 @@ namespace FanControl.AXB35
                         try
                         {
                             _ec.ReadCpuDieTemp();
-                            _sramAccessible = true;
                             _logger.Log("AXB35Plugin: SRAM access working.");
                         }
                         catch
                         {
-                            _sramAccessible = false;
                             _logger.Log("AXB35Plugin: SRAM access failed.");
                         }
                     }
@@ -166,13 +163,10 @@ namespace FanControl.AXB35
             }
         }
 
-        public event Action? RefreshRequested;
-
         public void Close()
         {
             _logger.Log("AXB35Plugin: Closing...");
             _chipDetected = false;
-            _sramAccessible = false;
             _tempSensors.Clear();
             _fanSensors.Clear();
             _controlSensors.Clear();

@@ -2,54 +2,102 @@
 
 Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature monitoring, fan RPM sensing, and fan speed control for mini PCs with an ITE IT5570 EC using the AXB35 firmware layout.
 
-> **⚠️ Disclaimer**
-> This plugin communicates directly with the embedded controller via ACPI EC register access. The register map was reverse-engineered and may not work on all firmware versions. When a fan control is set to manual mode, the EC's automatic thermal management is overridden for that fan — ensure your cooling is adequate. Level 0 stops the fan completely. Use at your own risk.
+> **⚠️ Warning**
+> This plugin communicates directly with the embedded controller (EC) via reverse-engineered registers. Compatibility is not guaranteed across all firmware versions. Setting a fan to manual mode overrides the EC’s automatic thermal management for that fan. Level 0 stops the fan completely.
+>
+> **Use at your own risk.** The author accepts no responsibility for any damage to hardware, data loss, system instability, or other issues that may arise from using this software. This software is provided “as is”, without warranty of any kind.
+
+## Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Basic configuration](#basic-configuration)
+- [Tested Hardware](#tested-hardware)
+- [Troubleshooting](#troubleshooting)
+- [Build (for developers)](#build-for-developers)
+- [How It Works](#how-it-works)
+- [Credits](#credits)
+- [License](#license)
 
 ## Features
 
 - **CPU Temp** — temperature sensor (°C)
 - **3x Fan RPM** — CPU Fan 1, CPU Fan 2, System Fan
-- **3x Fan Control** — paired control sensors, 6 discrete levels (0/20/40/60/80/100%)
+- **3x Fan Control** — fan controls paired with the RPM sensors, 6 discrete levels (0/20/40/60/80/100%)
 
-## Prerequisites
+## Installation
 
-- [Fan Control](https://github.com/Rem0o/FanControl.Releases) V271 or later
+1. If you don’t already have it, install [Fan Control](https://github.com/Rem0o/FanControl.Releases) **V271 or later**.
+2. Download the latest `FanControl.AXB35.dll` from the [Releases](https://github.com/pajtony/FanControl.AXB35/releases) page.
+3. Either:
+   - Copy the DLL into Fan Control’s `Plugins` folder  
+     (usually `C:\Program Files\FanControl\Plugins` or next to `FanControl.exe`), **or**
+   - In the Fan Control app, go to **Settings → Plugins → Install plugin** and select the downloaded DLL.
+4. Restart Fan Control.
+5. The new sensors and controls should appear under the **Sixunited_AXB35** group.
 
-## Install
+After installation you should see something similar to this:
 
-Copy `FanControl.AXB35.dll` to Fan Control's `Plugins` folder and restart Fan Control.
+![AXB35 controls after install](docs/after-install.png)
 
-## Fan Calibration Reference
+## Basic configuration
 
-These are measured RPM values for each level on a Bosgame M5 (Sixunited AXB35). Your values may vary.
+1. Pair the speed sensors by clicking the **Pair speed sensor** buttons. The manual pairing method is recommended — it’s straightforward and faster.
+2. Calibrate the fans by clicking the **Calibration** buttons. Manual calibration is recommended because the EC only supports 6 discrete speed levels (0, 20, 40, 60, 80, 100 %). Enter these values in the manual calibration window and always wait 2–3 seconds for the fan to reach the requested speed.
 
-| Level | CPU Fan 1 | CPU Fan 2 | System Fan |
-|-------|-----------|-----------|------------|
-| 0% | 0 RPM | 0 RPM | 0 RPM |
-| 20% | 1530 RPM | 1520 RPM | 600 RPM |
-| 40% | 2570 RPM | 2540 RPM | 1330 RPM |
-| 60% | 3390 RPM | 3340 RPM | 1970 RPM |
-| 80% | 4020 RPM | 4000 RPM | 2370 RPM |
-| 100% | 4600 RPM | 4600 RPM | 2530 RPM |
+<details>
+<summary><strong>CPU Fan 1 calibration example</strong> (click to expand)</summary>
+
+![CPU Fan 1 calibration](docs/CPU_Fan1_Calibration.png)
+
+</details>
+
+<details>
+<summary><strong>System Fan calibration example</strong> (click to expand)</summary>
+
+![System Fan calibration](docs/System_Fan_Calibration.png)
+
+</details>
+
+After pairing and calibration the controls should look similar to this:
+
+![After calibration](docs/after-calibration.png)
+
+3. Create fan curves that use the AXB35 temperature sensor (or a custom mix) to control the fans. You can also create custom sensors if needed. An example setup looks like this:
+
+<details>
+<summary><strong>Example setup</strong> (click to expand)</summary>
+
+![Example setup](docs/my_current_setup.png)
+
+</details>
 
 ## Tested Hardware
 
-| Device | Status | Notes |
-|--------|--------|-------|
-| Bosgame M5 | ✅ Confirmed working | Sixunited AXB35 |
-| GMKtec EVO-X2 (V21 & V22) | ⬜ Untested, may work | Same AXB35 board |
-| FEVM FA-EX9 (V22 & V30) | ⬜ Untested, may work | Same AXB35 board |
-| NIMO AI MiniPC | ⬜ Untested, may work | Same AXB35 board |
+| Device | Status | EC Firmware | Notes |
+|--------|--------|-------------|-------|
+| Bosgame M5 | ✅ Confirmed working | 1.08 | Sixunited AXB35 |
+| GMKtec EVO-X2 (V21 & V22) | ⬜ Untested, may work | — | Same AXB35 board |
+| FEVM FA-EX9 (V22 & V30) | ⬜ Untested, may work | — | Same AXB35 board |
+| NIMO AI MiniPC | ⬜ Untested, may work | — | Same AXB35 board |
+
+The EC firmware version is printed in Fan Control’s log (`log.txt`) when the plugin starts.
+
+## Troubleshooting
+
+- **Duplicate sensors appear**  
+  The plugin DLL is present twice in Fan Control’s `Plugins` folder. Remove the extra copy and restart Fan Control.
 
 ## Build (for developers)
 
-```bash
+```powershell
 git clone https://github.com/pajtony/FanControl.AXB35.git
 cd FanControl.AXB35
 
-# Copy reference DLLs from your Fan Control installation
-cp /path/to/FanControl/FanControl.Plugins.dll lib/
-cp /path/to/FanControl/LibreHardwareMonitorLib.dll lib/
+# Create lib folder and copy reference DLLs from your Fan Control installation
+mkdir lib
+copy "C:\Program Files\FanControl\FanControl.Plugins.dll" lib\
+copy "C:\Program Files\FanControl\LibreHardwareMonitorLib.dll" lib\
 
 dotnet build -c Release
 ```
@@ -60,7 +108,7 @@ Requires .NET 8 SDK.
 
 The plugin communicates with the IT5570 EC via the ACPI EC interface (ports `0x62`/`0x66`) using the PawnIO driver built into LibreHardwareMonitorLib. The EC firmware on these systems exposes fan control as 6 discrete levels through registers `0x21`-`0x26`. Fan Control's 0-100% is mapped to the nearest level.
 
-## Register Map
+### Register Map
 
 | Register | Function |
 |----------|----------|
@@ -70,8 +118,6 @@ The plugin communicates with the IT5570 EC via the ACPI EC interface (ports `0x6
 | `0x21/0x23/0x25` | Fan mode (auto/manual) |
 | `0x22/0x24/0x26` | Fan level (0-5) |
 | `0x70` | CPU temperature |
-
-Based on the [cmetz/ec-su_axb35-linux](https://github.com/cmetz/ec-su_axb35-linux) driver.
 
 ## Credits
 
