@@ -7,6 +7,19 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
 >
 > **Use at your own risk.** The author accepts no responsibility for any damage to hardware, data loss, system instability, or other issues that may arise from using this software. This software is provided “as is”, without warranty of any kind.
 
+## Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Basic configuration](#basic-configuration)
+- [Fan Calibration Reference](#fan-calibration-reference)
+- [Tested Hardware](#tested-hardware)
+- [Build (for developers)](#build-for-developers)
+- [How It Works](#how-it-works)
+- [Register Map](#register-map)
+- [Credits](#credits)
+- [License](#license)
+
 ## Features
 
 - **CPU Temp** — temperature sensor (°C)
