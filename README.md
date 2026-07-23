@@ -45,9 +45,19 @@ After installation you should see something similar to this:
 1. Pair the speed sensors by clicking the **Pair speed sensor** buttons. The manual pairing method is recommended — it’s straightforward and faster.
 2. Calibrate the fans by clicking the **Calibration** buttons. Manual calibration is recommended because the EC only supports 6 discrete speed levels (0, 20, 40, 60, 80, 100 %). Enter these values in the manual calibration window and always wait 2–3 seconds for the fan to reach the requested speed.
 
+<details>
+<summary><strong>CPU Fan 1 calibration example</strong> (click to expand)</summary>
+
 ![CPU Fan 1 calibration](docs/CPU_Fan1_Calibration.png)
 
+</details>
+
+<details>
+<summary><strong>System Fan calibration example</strong> (click to expand)</summary>
+
 ![System Fan calibration](docs/System_Fan_Calibration.png)
+
+</details>
 
 After pairing and calibration the controls should look similar to this:
 
