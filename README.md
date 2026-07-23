@@ -13,6 +13,7 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
 - [Installation](#installation)
 - [Basic configuration](#basic-configuration)
 - [Tested Hardware](#tested-hardware)
+- [Troubleshooting](#troubleshooting)
 - [Build (for developers)](#build-for-developers)
 - [How It Works](#how-it-works)
 - [Credits](#credits)
@@ -33,7 +34,7 @@ Fan Control plugin for the Sixunited AXB35 motherboard. Provides temperature mon
      (usually `C:\Program Files\FanControl\Plugins` or next to `FanControl.exe`), **or**
    - In the Fan Control app, go to **Settings → Plugins → Install plugin** and select the downloaded DLL.
 4. Restart Fan Control.
-5. The new sensors and controls should appear under the **AXB35** group.
+5. The new sensors and controls should appear under the **Sixunited_AXB35** group.
 
 After installation you should see something similar to this:
 
@@ -64,7 +65,12 @@ After pairing and calibration the controls should look similar to this:
 
 3. Create fan curves that use the AXB35 temperature sensor (or a custom mix) to control the fans. You can also create custom sensors if needed. An example setup looks like this:
 
+<details>
+<summary><strong>Example setup</strong> (click to expand)</summary>
+
 ![Example setup](docs/my_current_setup.png)
+
+</details>
 
 ## Tested Hardware
 
@@ -77,15 +83,21 @@ After pairing and calibration the controls should look similar to this:
 
 The EC firmware version is printed in Fan Control’s log (`log.txt`) when the plugin starts.
 
+## Troubleshooting
+
+- **Duplicate sensors appear**  
+  The plugin DLL is present twice in Fan Control’s `Plugins` folder. Remove the extra copy and restart Fan Control.
+
 ## Build (for developers)
 
-```bash
+```powershell
 git clone https://github.com/pajtony/FanControl.AXB35.git
 cd FanControl.AXB35
 
-# Copy reference DLLs from your Fan Control installation
-cp /path/to/FanControl/FanControl.Plugins.dll lib/
-cp /path/to/FanControl/LibreHardwareMonitorLib.dll lib/
+# Create lib folder and copy reference DLLs from your Fan Control installation
+mkdir lib
+copy "C:\Program Files\FanControl\FanControl.Plugins.dll" lib\
+copy "C:\Program Files\FanControl\LibreHardwareMonitorLib.dll" lib\
 
 dotnet build -c Release
 ```
